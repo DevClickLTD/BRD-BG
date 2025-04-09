@@ -64,9 +64,9 @@ export default function Footer() {
         setServicesLoading(true);
         const servicesData = await getServicesForFooter();
         if (servicesData && Array.isArray(servicesData)) {
-          const formattedServices = servicesData.map(service => ({
+          const formattedServices = servicesData.map((service) => ({
             name: service.title.rendered,
-            href: `/services/${service.slug}`
+            href: `/services/${service.slug}`,
           }));
           setServices(formattedServices);
         }
@@ -83,18 +83,21 @@ export default function Footer() {
   // Function to chunk the services array into columns
   const getServiceColumns = (services, columns = 2) => {
     if (!services || !services.length) return [];
-    
+
     const itemsPerColumn = Math.ceil(services.length / columns);
     const result = [];
-    
+
     for (let i = 0; i < columns; i++) {
       const startIndex = i * itemsPerColumn;
-      const columnServices = services.slice(startIndex, startIndex + itemsPerColumn);
+      const columnServices = services.slice(
+        startIndex,
+        startIndex + itemsPerColumn
+      );
       if (columnServices.length > 0) {
         result.push(columnServices);
       }
     }
-    
+
     return result;
   };
 
@@ -225,7 +228,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+        {/* <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-sm/6 font-semibold text-gray-900">
               Абонирайте се за нашия бюлетин
@@ -269,7 +272,7 @@ export default function Footer() {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
         <div className="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex gap-x-6 md:order-2">
             {navigation.social.map((item) => (

@@ -20,7 +20,7 @@ export default function Home() {
       <Team />
       <CTA />
       <Clients />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Testimonial />
       <Lastestposts />
     </>
