@@ -155,12 +155,12 @@ export default function Navigation() {
     const languageUrls = {
       bg: "#", // bg.example.com
       en: "https://brd-en.vercel.app/", // en.example.com
-      de: "https://brd-ru.vercel.app/", // de.example.com
+      ru: "https://brd-ru.vercel.app/", // ru.example.com
     };
 
     // В реален проект това ще пренасочва към актуалните поддомейн URLs
     if (languageUrls[newLang]) {
-      // window.location.href = languageUrls[newLang];
+      window.location.href = languageUrls[newLang];
       console.log("Would redirect to:", languageUrls[newLang]);
     }
   };
