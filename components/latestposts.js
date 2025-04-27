@@ -81,25 +81,20 @@ export default function LatestPosts() {
                           </p>
                         </div>
                         <div className="relative mt-8 flex items-center gap-x-4">
-                          <Image
-                            width={40}
-                            height={40}
-                            quality={80}
-                            loading="lazy"
-                            alt="Автор"
-                            src={
-                              post.yoast_head_json?.schema?.["@graph"]?.find(
-                                (person) => person["@type"] === "Person"
-                              )?.image?.url || "/placeholder.webp"
-                            }
-                            className="size-10 rounded-full bg-gray-100"
-                            format="webp"
-                          />
+                          <div className="relative rounded-md bg-white p-1 shadow-sm">
+                            <Image
+                              width={40}
+                              height={40}
+                              quality={80}
+                              loading="lazy"
+                              alt="BRD"
+                              src="/brd_menu_logo.png"
+                              className="size-10 object-contain"
+                              format="webp"
+                            />
+                          </div>
                           <div className="text-sm/6 text-left">
-                            <p className="font-semibold text-white">
-                              {post.yoast_head_json?.author || "Unknown Author"}
-                            </p>
-                            <p className="text-white">Author</p>
+                            <p className="text-white">Автор</p>
                           </div>
                         </div>
                       </div>
@@ -107,7 +102,7 @@ export default function LatestPosts() {
                   </Link>
                 ))
               ) : (
-                <p className="text-gray-600">No posts found.</p>
+                <p className="text-gray-600">Няма намерени статии.</p>
               )}
             </div>
           )}
