@@ -33,6 +33,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const searchRef = useRef(null);
   const [selectedLanguage, setSelectedLanguage] = useState("bg");
+  const [showBlogSubmenu, setShowBlogSubmenu] = useState(false);
   const [navigation, setNavigation] = useState({
     categories: [
       {
@@ -45,7 +46,14 @@ export default function Navigation() {
     pages: [
       { name: "Начало", href: "/" },
       { name: "Екип", href: "/team" },
-      { name: "Блог", href: "/blog" },
+      {
+        name: "Публикации",
+        href: "#",
+        submenu: [
+          { name: "Статии", href: "/posts" },
+          { name: "Новини", href: "/novini" }
+        ],
+      },
       { name: "Контакти", href: "/contact" },
     ],
   });
@@ -203,14 +211,46 @@ export default function Navigation() {
               <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                 {navigation.pages.map((page) => (
                   <div key={page.name} className="flow-root">
-                    <Link
-                      href={page.href}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                      onClick={() => setOpen(false)}
-                      prefetch={true}
-                    >
-                      {page.name}
-                    </Link>
+                    {page.submenu ? (
+                      <div className="space-y-4">
+                        <button
+                          onClick={() => setShowBlogSubmenu(!showBlogSubmenu)}
+                          className="-m-2 flex items-center justify-between w-full p-2 font-medium text-gray-900"
+                        >
+                          <span>{page.name}</span>
+                          <ChevronDownIcon
+                            className={`h-5 w-5 text-gray-500 transition-transform duration-200 ${
+                              showBlogSubmenu ? "rotate-180" : "rotate-0"
+                            }`}
+                          />
+                        </button>
+                        
+                        {showBlogSubmenu && (
+                          <div className="pl-4 space-y-2 border-l-2 border-gray-100">
+                            {page.submenu.map((subitem) => (
+                              <Link
+                                key={subitem.name}
+                                href={subitem.href}
+                                className="-m-2 block p-2 text-gray-600 hover:text-gray-900"
+                                onClick={() => setOpen(false)}
+                                prefetch={true}
+                              >
+                                {subitem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        href={page.href}
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                        onClick={() => setOpen(false)}
+                        prefetch={true}
+                      >
+                        {page.name}
+                      </Link>
+                    )}
                   </div>
                 ))}
               </div>
@@ -340,18 +380,60 @@ export default function Navigation() {
               <div className="hidden lg:flex lg:items-center lg:justify-center lg:flex-1">
                 <PopoverGroup className="flex">
                   <div className="flex space-x-8">
-                    {navigation.pages.map((page) => (
-                      <Link
-                        key={page.name}
-                        href={page.href}
-                        className={`flex items-center font-medium text-gray-700 hover:text-gray-800 ${
-                          isScrolled ? "text-base" : "text-lg"
-                        }`}
-                        prefetch={true}
-                      >
-                        {page.name}
-                      </Link>
-                    ))}
+                    {navigation.pages.map((page) => 
+                      page.submenu ? (
+                        <Popover key={page.name} className="flex">
+                          {({ open, close }) => (
+                            <>
+                              <div className="relative flex">
+                                <PopoverButton
+                                  className={`relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-open:border-[#95161C] data-open:text-[#95161C] cursor-pointer focus-visible:outline-none transition-all ${
+                                    isScrolled ? "text-base" : "text-lg"
+                                  }`}
+                                >
+                                  {page.name}
+                                  <ChevronDownIcon
+                                    className={`ml-2 h-5 w-5 text-gray-500 transition-transform duration-200 ease-in-out ${
+                                      open ? "rotate-180" : "rotate-0"
+                                    }`}
+                                  />
+                                </PopoverButton>
+                              </div>
+                              <PopoverPanel
+                                transition
+                                className="absolute z-10 bg-white mt-1 py-2 w-48 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+                                style={{ top: isScrolled ? "3.5rem" : "5rem" }}
+                              >
+                                <div className="py-1">
+                                  {page.submenu.map((subitem) => (
+                                    <Link
+                                      key={subitem.name}
+                                      href={subitem.href}
+                                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#95161C]"
+                                      onClick={close}
+                                      prefetch={true}
+                                    >
+                                      {subitem.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </PopoverPanel>
+                            </>
+                          )}
+                        </Popover>
+                      ) : (
+                        <Link
+                          key={page.name}
+                          href={page.href}
+                          className={`flex items-center font-medium text-gray-700 hover:text-gray-800 ${
+                            isScrolled ? "text-base" : "text-lg"
+                          }`}
+                          prefetch={true}
+                        >
+                          {page.name}
+                        </Link>
+                      )
+                    )}
                     {navigation.categories.map((category) => (
                       <Popover key={category.name} className="flex">
                         {({ open, close }) => (

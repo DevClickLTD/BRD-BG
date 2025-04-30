@@ -99,4 +99,4 @@ export default async function PostPage({ params }) {
   } catch (error) {
     return <p>Error: {error.message}</p>;
   }
-}
+} 
