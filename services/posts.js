@@ -18,7 +18,7 @@ export const getPostBySlug = cache(async (slug) => {
  */
 export const getLatestPosts = cache(async () => {
   return await fetchAPI(
-    "posts?per_page=3&_fields=id,slug,yoast_head_json,date,title,content"
+    "posts?per_page=3&_fields=id,slug,yoast_head_json,date,title,content&categories=5"
   );
 });
 
