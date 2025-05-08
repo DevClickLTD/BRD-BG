@@ -51,7 +51,7 @@ export default function Navigation() {
         href: "#",
         submenu: [
           { name: "Статии", href: "/posts" },
-          { name: "Новини", href: "/novini" }
+          { name: "Новини", href: "/novini" },
         ],
       },
       { name: "Контакти", href: "/contact" },
@@ -161,9 +161,9 @@ export default function Navigation() {
 
     // Примерни пренасочвания към поддомейни
     const languageUrls = {
-      bg: "#", // bg.example.com
-      en: "https://brd-en.vercel.app/", // en.example.com
-      ru: "https://brd-ru.vercel.app/", // ru.example.com
+      bg: "#",
+      en: "https://en.brd-law.bg/",
+      ru: "https://ru.brd-law.bg/",
     };
 
     // В реален проект това ще пренасочва към актуалните поддомейн URLs
@@ -224,7 +224,7 @@ export default function Navigation() {
                             }`}
                           />
                         </button>
-                        
+
                         {showBlogSubmenu && (
                           <div className="pl-4 space-y-2 border-l-2 border-gray-100">
                             {page.submenu.map((subitem) => (
@@ -380,7 +380,7 @@ export default function Navigation() {
               <div className="hidden lg:flex lg:items-center lg:justify-center lg:flex-1">
                 <PopoverGroup className="flex">
                   <div className="flex space-x-8">
-                    {navigation.pages.map((page) => 
+                    {navigation.pages.map((page) =>
                       page.submenu ? (
                         <Popover key={page.name} className="flex">
                           {({ open, close }) => (
