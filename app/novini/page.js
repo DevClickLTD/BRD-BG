@@ -1,11 +1,11 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { getPostsByCategory } from "../../services/posts";
 
 export const metadata = {
-  title: "Новини - Адвокатско дружество \"Бурков, Радев, Дюлгерска\"",
+  title: "Новини - Адвокатско дружество \"Бурков, Радев и партньори\"",
   description:
-    "Следете последните новини и актуални събития от Адвокатско дружество \"Бурков, Радев, Дюлгерска\".",
+    "Следете последните новини и актуални събития от Адвокатско дружество \"Бурков, Радев и партньори\".",
 };
 
 // Category ID for "news" - replace with actual ID from WordPress

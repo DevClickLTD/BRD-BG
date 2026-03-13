@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import StaticOptimizedImage from "./StaticOptimizedImage";
 import Head from "next/head";
 import LazyImageObserver from "./LazyImageObserver";
@@ -30,7 +30,7 @@ export default function Hero() {
               src="/lawyer-mobile-lcp.webp"
               width={640}
               height={400}
-              alt="Адвокатско дружество Бурков, Радев, Дюлгерска"
+              alt="Адвокатско дружество Бурков, Радев и партньори"
               className="w-full h-auto object-cover aspect-[4/3]"
               fetchPriority="high"
               decoding="async"
@@ -41,7 +41,7 @@ export default function Hero() {
 
           <div className="px-6 py-10">
             <h1 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 font-display">
-              "Бурков, Радев, Дюлгерска"
+              "Бурков, Радев и партньори"
             </h1>
             <p className="mt-4 text-2xl font-medium font-display">
               Адвокатско дружество
@@ -98,7 +98,7 @@ export default function Hero() {
                     </div>
                   </div>
                   <h1 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl font-display">
-                    "Бурков, Радев, Дюлгерска"
+                    "Бурков, Радев и партньори"
                   </h1>
                   <p className="mt-8 text-4xl font-medium font-display">
                     Адвокатско дружество
@@ -136,7 +136,7 @@ export default function Hero() {
               src="/lawyer-desktop-lcp.webp"
               width={955}
               height={776}
-              alt="Адвокатско дружество Бурков, Радев, Дюлгерска"
+              alt="Адвокатско дружество Бурков, Радев и партньори"
               className="h-full w-full object-cover"
               fetchPriority="high"
               decoding="async"

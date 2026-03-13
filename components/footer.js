@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import useSubscribe from "../hooks/useSubscribe";
@@ -141,7 +141,7 @@ export default function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div>
             <img
-              alt="Адвокатско дружество Бурков, Радев, Дюлгерска"
+              alt="Адвокатско дружество Бурков, Радев и партньори"
               src="/brd-logo.svg"
               className="w-full"
             />
